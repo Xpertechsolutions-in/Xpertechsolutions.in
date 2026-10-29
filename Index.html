@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xpertech Solutions | Industrial Automation, Security & Solar Solutions</title>
+  <style>
+    :root {
+      --primary: #0a2540;
+      --accent: #0070f3;
+      --light-bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --success: #10b981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    body { background-color: var(--light-bg); color: var(--text-main); line-height: 1.6; }
+    
+    /* Top Contact Bar */
+    .top-bar { background: var(--primary); color: #fff; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; flex-wrap: wrap; gap: 10px; }
+    .top-links a { color: #fff; text-decoration: none; margin-left: 15px; font-weight: 500; }
+    .top-links a:hover { text-decoration: underline; }
+    
+    /* Hero Section */
+    .hero { background: linear-gradient(135deg, #0a2540 0%, #1e3a8a 100%); color: #fff; text-align: center; padding: 60px 20px 40px; }
+    .hero h1 { font-size: 2.4rem; margin-bottom: 12px; font-weight: 700; }
+    .hero p { font-size: 1.1rem; color: #cbd5e1; max-width: 800px; margin: 0 auto 25px; }
+    .hero-btn { background: var(--accent); color: #fff; border: none; padding: 12px 28px; font-size: 1rem; border-radius: 6px; cursor: pointer; text-decoration: none; display: inline-block; font-weight: 600; margin: 5px; }
+    .hero-btn-alt { background: var(--success); }
+    
+    /* Category Filter Tabs */
+    .filter-wrapper { text-align: center; margin: 30px 5% 10px; }
+    .filter-btn { background: #fff; border: 1px solid var(--border); padding: 10px 20px; margin: 5px; border-radius: 30px; cursor: pointer; font-weight: 600; color: var(--text-main); transition: 0.2s; }
+    .filter-btn.active, .filter-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* Catalog Cards Grid */
+    .container { max-width: 1200px; margin: 20px auto 60px; padding: 0 20px; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
+    .product-card { background: var(--card-bg); border-radius: 10px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+    .card-header { background: #f1f5f9; padding: 12px 20px; font-size: 0.8rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; flex-grow: 1; }
+    .card-body h3 { font-size: 1.25rem; color: var(--primary); margin-bottom: 10px; }
+    .card-body ul { list-style: none; margin: 10px 0; font-size: 0.92rem; color: var(--text-muted); }
+    .card-body ul li { margin-bottom: 6px; padding-left: 15px; position: relative; }
+    .card-body ul li::before { content: "•"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
+    .card-footer { padding: 15px 20px; border-top: 1px solid var(--border); background: #fafafa; }
+    .card-action { display: block; text-align: center; background: var(--primary); color: #fff; text-decoration: none; padding: 8px 14px; border-radius: 5px; font-weight: 500; font-size: 0.9rem; }
+    .card-action:hover { background: var(--accent); }
+
+    /* Contact Section */
+    .contact-section { background: #fff; border-top: 1px solid var(--border); padding: 50px 20px; }
+    .contact-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .contact-info h2 { color: var(--primary); margin-bottom: 15px; }
+    .contact-info p { margin-bottom: 10px; color: var(--text-muted); font-size: 0.95rem; }
+    .contact-form input, .contact-form textarea, .contact-form select { width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid var(--border); border-radius: 5px; }
+    .contact-form button { background: var(--accent); color: #fff; border: none; padding: 12px; width: 100%; border-radius: 5px; font-weight: 600; cursor: pointer; }
+
+    /* Footer */
+    footer { background: #071727; color: #94a3b8; text-align: center; padding: 25px 20px; font-size: 0.85rem; }
+    footer a { color: #cbd5e1; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    
+    @media (max-width: 768px) {
+      .top-bar { text-align: center; justify-content: center; }
+      .contact-container { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Contact Strip -->
+  <div class="top-bar">
+    <div><strong>X-PERTECH SOLUTIONS</strong> | Derabassi, Punjab</div>
+    <div class="top-links">
+      <a href="tel:+919569329637">📞 +91-95693 29637</a>
+      <a href="https://wa.me/919569329637" target="_blank">💬 WhatsApp</a>
+      <a href="mailto:info@xpertechsolutions.in">✉️ info@xpertechsolutions.in</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <h1>Industrial Automation & Smart Infrastructure</h1>
+    <p>From Machine Vision & Autonomous Robotics to Enterprise Security, Fire Alarms, and Industrial Solar Solutions.</p>
+    <a href="tel:+919569329637" class="hero-btn">Call Now: +91-95693 29637</a>
+    <a href="https://wa.me/919569329637" target="_blank" class="hero-btn hero-btn-alt">WhatsApp Direct</a>
+  </header>
+
+  <!-- Interactive Category Selector -->
+  <div class="filter-wrapper">
+    <button class="filter-btn active" onclick="filterItems('all')">All Solutions</button>
+    <button class="filter-btn" onclick="filterItems('robotics')">AMR / AGV & Conveyors</button>
+    <button class="filter-btn" onclick="filterItems('vision')">Machine Vision & Sensors</button>
+    <button class="filter-btn" onclick="filterItems('security')">CCTV & Access Control</button>
+    <button class="filter-btn" onclick="filterItems('fire')">Fire & Alarm Systems</button>
+    <button class="filter-btn" onclick="filterItems('solar')">Solar Power Solutions</button>
+  </div>
+
+  <!-- Catalog Grid -->
+  <main class="container">
+    <div class="product-grid" id="productGrid">
+
+      <!-- ROBOTICS CARDS -->
+      <div class="product-card" data-category="robotics">
+        <div class="card-header">Intralogistics & Mobile Robotics</div>
+        <div class="card-body">
+          <h3>Latent Mobile Robots (LMR Series)</h3>
+          <ul>
+            <li><strong>Payload:</strong> 600 kg / 1,000 kg / 1,500 kg</li>
+            <li><strong>Navigation:</strong> Laser SLAM + 2D Floor QR Grid</li>
+            <li><strong>Lifting:</strong> 50–60 mm electric screw jack (<3.5 s)</li>
+            <li><strong>Safety:</strong> 360° dual safety LiDAR + bumper edge</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="tel:+919569329637" class="card-action">Inquire by Call</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="robotics">
+        <div class="card-header">Intralogistics & Mobile Robotics</div>
+        <div class="card-body">
+          <h3>Autonomous Forklifts & Heavy AMRs</h3>
+          <ul>
+            <li><strong>Forklift Capacity:</strong> 1,500 kg to 2,500 kg (up to 9m lift)</li>
+            <li><strong>Heavy AMR (HMR):</strong> 3,000 kg up to 10,000+ kg dies & frames</li>
+            <li><strong>Vision:</strong> 3D ToF camera for pallet pocket alignment</li>
+            <li><strong>Tuggers:</strong> Automated tow AGVs up to 5,000 kg towing</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="tel:+919569329637" class="card-action">Inquire by Call</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="robotics">
+        <div class="card-header">Warehouse Automation</div>
+        <div class="card-body">
+          <h3>Conveyors & High-Speed Sorters</h3>
+          <ul>
+            <li><strong>Pallet Conveyors:</strong> CDLR & chain drives up to 2,000 kg</li>
+            <li><strong>MDR Carton Lines:</strong> 24V/48V DC rollers with ZPA accumulation</li>
+            <li><strong>High-Speed Sorters:</strong> 3,000 to 10,000+ parcels per hour</li>
+            <li><strong>Continuous Lifts:</strong> VRC vertical lifts for multi-tier storage</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="tel:+919569329637" class="card-action">Inquire by Call</a>
+        </div>
+      </div>
+
+      <!-- VISION & SENSORS -->
+      <div class="product-card" data-category="vision">
+        <div class="card-header">Machine Vision Inspection</div>
+        <div class="card-body">
+          <h3>Industrial Vision & AI Inspection</h3>
+          <ul>
+            <li><strong>Quality Check:</strong> Scratch, crack, burr, and dent inspection</li>
+            <li><strong>Traceability:</strong> 1D/2D Barcode, QR code, and DPM reading</li>
+            <li><strong>OCR/OCV:</strong> Batch code, expiry date, and serial verification</li>
+            <li><strong>Measurement:</strong> Non-contact dimensional verification</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="tel:+919569329637" class="card-action">Inquire by Call</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="vision">
+        <div class="card-header">Sensors & Control Switchgear</div>
+        <div class="card-body">
+          <h3>Sensors, Safety & Switchgear</h3>
+          <ul>
+            <li><strong>Sensors:</strong> Inductive, Photoelectric, Ultrasonic, Laser</li>
+            <li><strong>Safety:</strong> Light curtains, Safety relays, E-stops, Interlocks</li>
+            <li><strong>Switchgear:</strong> Relays, Contactors, SMPS DC power, Push buttons</li>
+            <li><strong>Wiring:</strong> Industrial terminal blocks and heavy-duty connectors</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="tel:+919569329637" class="card-action">Inquire by Call</a>
+        </div>
+      </div>
+
+      <!-- SECURITY & SURVEILLANCE -->
+      <div class="product-card" data-category="security">
+        <div class="card-header">Electronic Security</div>
+        <div class="card-body">
+          <h3>CCTV Video Surveillance</h3>
+          <ul>
+            <li><strong>Cameras:</strong> IP Bullet, Dome, PTZ, Thermal & AI Smart cams</li>
+            <li><strong>Recording:</strong> Enterprise Network Video Recorders (NVR) & VMS</li>
+            <li><strong>AI Analytics:</strong> Perimeter intrusion, face detection, vehicle ANPR</li>
+            <li><strong>Monitoring:</strong> 24/7 centralized command & remote mobile access</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="tel:+919569329637" class="card-action">Inquire by Call</a>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="security">
+        <div class="card-header">Access & Workforce Management</div>
+        <div class="card-body">
+          <h3>Access Control & Barriers</h3>
+          <ul>
+            <li><strong>Terminals:</strong> Facial recognition, Biometric fingerprint, RFID</li>
+            <li><strong>Physical Barriers:</strong> Motorized boom barriers & turnstiles</li>
+            <li><strong>Control:</strong> Multi-door access controllers & magnetic locks</li>
+            <li><strong>Software:</strong> Automated time-attendance & visitor logs</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="tel:+919569329637" class="card-action">Inquire by Call</a>
+        </div>
+      </div>
+
+      <!-- FIRE & ALARM -->
+      <div class="product-card" data-category="fire">
+        <div class="card-header">Life Safety Systems</div>
+        <div class="card-body">
+          <h3>Fire Detection & Alarm Systems</h3>
+          <ul>
+            <li><strong>Panels:</strong> Addressable and conventional fire alarm panels</li>
+            <li><strong>Detection:</strong> Optical smoke, heat, and flame multi-sensors</li>
+            <li><strong>Emergency:</strong> Manual call points (MCP) and strobe hooters</li>
+            <li><strong>Integration:</strong> Automatic HVAC shutdown & door release triggers</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="tel:+919569329637" class="card-action">Inquire by Call</a>
+        </div>
+      </div>
+
+      <!-- SOLAR SOLUTIONS -->
+      <div class="product-card" data-category="solar">
+        <div class="card-header">Clean Energy</div>
+        <div class="card-body">
+          <h3>Commercial & Industrial Solar Solutions</h3>
+          <ul>
+            <li><strong>EPC Installations:</strong> Turnkey on-grid rooftop solar plants</li>
+            <li><strong>Inverters:</strong> High-efficiency industrial grid-tied inverters</li>
+            <li><strong>Energy Storage:</strong> Industrial hybrid battery energy systems</li>
+            <li><strong>Monitoring:</strong> Real-time cloud portal tracking generation & ROI</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="tel:+919569329637" class="card-action">Inquire by Call</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Contact & Direct Inquiry Section -->
+  <section class="contact-section" id="contact">
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2>Contact Xpertech Solutions</h2>
+        <p><strong>Office Address:</strong><br>Plot No. 76, Sky City, Derabassi, Punjab – 140 507</p>
+        <p><strong>Direct Phone:</strong><br><a href="tel:+919569329637" style="color: var(--accent); font-weight: 600;">+91-95693 29637</a></p>
+        <p><strong>Official Email:</strong><br><a href="mailto:info@xpertechsolutions.in" style="color: var(--accent); font-weight: 600;">info@xpertechsolutions.in</a></p>
+        <p style="margin-top: 15px;"><em>"From Concept to Commissioning — Your Trusted Engineering & Infrastructure Partner."</em></p>
+      </div>
+
+      <div class="contact-form">
+        <h3>Send Quick Inquiry</h3>
+        <form action="mailto:info@xpertechsolutions.in" method="post" enctype="text/plain">
+          <input type="text" name="name" placeholder="Your Name / Company" required>
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+          <select name="service_required">
+            <option value="Robotics & AGV/AMR">Robotics & AGV/AMR</option>
+            <option value="Machine Vision & Sensors">Machine Vision & Sensors</option>
+            <option value="CCTV & Access Control">CCTV & Access Control</option>
+            <option value="Fire Alarm Systems">Fire Alarm Systems</option>
+            <option value="Solar Solutions">Solar Solutions</option>
+          </select>
+          <textarea name="message" rows="3" placeholder="Brief requirement details..."></textarea>
+          <button type="submit">Submit Inquiry Directly</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer with Logout Link -->
+  <footer>
+    <p>&copy; 2026 Xpertech Solutions. All rights reserved. | Plot No. 76, Sky City, Derabassi, Punjab - 140 507</p>
+    <p style="margin-top: 10px;">
+      <a href="https://account.godaddy.com" target="_blank" rel="noopener">Admin Login</a> | 
+      <a href="#">Logout / Portal</a>
+    </p>
+  </footer>
+
+  <!-- Filter Script -->
+  <script>
+    function filterItems(category) {
+      const cards = document.querySelectorAll('.product-card');
+      const buttons = document.querySelectorAll('.filter-btn');
+      
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
