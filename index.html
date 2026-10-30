@@ -166,13 +166,13 @@
 
   <!-- Interactive Category Selector -->
   <div class="filter-wrapper">
-    <button class="filter-btn active" onclick="filterItems('all')">All Solutions</button>
-    <button class="filter-btn" onclick="filterItems('robotics')">AMR / AGV & Logistics</button>
-    <button class="filter-btn" onclick="filterItems('vision')">Machine Vision & Sensors</button>
-    <button class="filter-btn" onclick="filterItems('security')">CCTV & Access Control</button>
-    <button class="filter-btn" onclick="filterItems('fire')">Fire & Alarm Systems</button>
-    <button class="filter-btn" onclick="filterItems('solar')">Solar Power Solutions</button>
-    <button class="filter-btn" onclick="filterItems('glass')">Toughened & Architectural Glass</button>
+    <button class="filter-btn active" onclick="filterItems('all', this)">All Solutions</button>
+    <button class="filter-btn" onclick="filterItems('robotics', this)">AMR / AGV & Logistics</button>
+    <button class="filter-btn" onclick="filterItems('vision', this)">Machine Vision & Sensors</button>
+    <button class="filter-btn" onclick="filterItems('security', this)">CCTV & Access Control</button>
+    <button class="filter-btn" onclick="filterItems('fire', this)">Fire & Alarm Systems</button>
+    <button class="filter-btn" onclick="filterItems('solar', this)">Solar Power Solutions</button>
+    <button class="filter-btn" onclick="filterItems('glass', this)">Toughened & Architectural Glass</button>
   </div>
 
   <!-- Catalog Grid -->
@@ -400,12 +400,14 @@
 
   <!-- Unified Category Filter Script -->
   <script>
-    function filterItems(category) {
+    function filterItems(category, element) {
       const buttons = document.querySelectorAll('.filter-btn');
       const cards = document.querySelectorAll('.product-card');
 
       buttons.forEach(btn => btn.classList.remove('active'));
-      event.currentTarget.classList.add('active');
+      if (element) {
+        element.classList.add('active');
+      }
 
       cards.forEach(card => {
         if (category === 'all' || card.getAttribute('data-category') === category) {
