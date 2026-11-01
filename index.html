@@ -51,14 +51,17 @@ a{color:inherit}
 h1,h2,h3{font-family:var(--head);line-height:1.05;letter-spacing:.2px}
 .nav{position:sticky;top:0;z-index:50;background:rgba(11,22,34,.96);color:#fff}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
-.logo{font-family:var(--head);font-size:1.7rem;font-weight:700;text-decoration:none}
+.logo{font-family:var(--head);font-size:1.7rem;font-weight:700;text-decoration:none;white-space:nowrap}
 .logo b{color:var(--orange)}
-.nav-links{display:flex;gap:24px;font-weight:500;font-size:.95rem}
+.nav-links{display:flex;gap:26px;font-weight:500;font-size:.95rem;white-space:nowrap}
+.nav-r{display:flex;align-items:center;gap:10px}
+.burger{display:none;background:none;border:1px solid #2c4763;border-radius:4px;width:44px;height:40px;cursor:pointer;padding:0;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.burger span{display:block;width:20px;height:2px;background:#fff}
 .nav-links a{text-decoration:none;color:#c9d4e0}.nav-links a:hover{color:#fff}
 .btn{display:inline-block;background:var(--orange);color:#fff;font-weight:600;text-decoration:none;padding:13px 24px;border-radius:4px;border:0;cursor:pointer;font:600 1rem var(--body)}
 .btn:hover{background:var(--orange-d)}
 .btn.wa{background:var(--wa)}.btn.wa:hover{background:#178a45}
-.nav .btn{padding:9px 18px;font-size:.92rem}
+.nav .btn{padding:9px 18px;font-size:.92rem;white-space:nowrap}
 .hero{background:var(--ink);color:#fff}
 .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding-top:64px;padding-bottom:64px}
 .hero h1{font-size:clamp(2.5rem,5.6vw,4.3rem);font-weight:700}
@@ -73,8 +76,11 @@ h1,h2,h3{font-family:var(--head);line-height:1.05;letter-spacing:.2px}
 .p2{animation-delay:-3s}.p3{animation-delay:-6s}
 @keyframes belt{from{transform:translateX(-60px)}to{transform:translateX(440px)}}
 .scan{animation:scan 1.6s ease-in-out infinite alternate}
+.rp{animation:rp 9s steps(1,end) infinite}.rr{animation:rr 9s steps(1,end) infinite}
+@keyframes rp{0%{opacity:0}11.7%{opacity:1}78.4%{opacity:0}}
+@keyframes rr{0%{opacity:1}11.7%{opacity:0}78.4%{opacity:1}}
 @keyframes scan{from{opacity:.25}to{opacity:.9}}
-@media (prefers-reduced-motion:reduce){.part,.scan{animation:none}.part{transform:translateX(120px)}}
+@media (prefers-reduced-motion:reduce){.part,.scan,.rp,.rr{animation:none}.rr{opacity:0}.part{transform:translateX(120px)}}
 .strip{background:var(--orange);color:#111}
 .strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding-top:18px;padding-bottom:18px}
 .strip div{font-family:var(--head);font-size:1.25rem;font-weight:700;line-height:1.15}
@@ -124,9 +130,12 @@ footer{background:var(--ink);color:#8ea0b4;padding:34px 0;font-size:.9rem}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 footer a{color:#c9d4e0;text-decoration:none}
 .fab{position:fixed;right:20px;bottom:20px;z-index:60;background:var(--wa);color:#fff;text-decoration:none;font-weight:600;padding:13px 20px;border-radius:50px;box-shadow:0 6px 18px rgba(0,0,0,.3);display:flex;gap:8px;align-items:center}
-@media(max-width:900px){
+@media(max-width:1024px){
+.burger{display:flex}
+.nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:#0b1622;flex-direction:column;gap:0;padding:6px 22px 14px;border-top:1px solid #223850;box-shadow:0 12px 24px rgba(0,0,0,.35)}
+.nav.open .nav-links{display:flex}
+.nav-links a{padding:13px 0;border-bottom:1px solid #1b3048;font-size:1.05rem}
 .hero .wrap,.contact-grid{grid-template-columns:1fr}
-.nav-links{display:none}
 .strip .wrap{grid-template-columns:1fr 1fr}
 .steps{grid-template-columns:1fr;gap:26px}
 section{padding:54px 0}
@@ -139,8 +148,8 @@ section{padding:54px 0}
 <nav class="nav" aria-label="Main">
 <div class="wrap">
 <a href="#" class="logo">XPER<b>TECH</b> SOLUTIONS</a>
-<div class="nav-links"><a href="#problems">Problems we solve</a><a href="#cameras">Cameras</a><a href="#brands">Brands</a><a href="#expertise">Why us</a><a href="#applications">Vision applications</a><a href="#industries">Industries</a><a href="#areas">Service areas</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
-<a class="btn" href="tel:+919569329637">Call now</a>
+<div class="nav-links" id="menu"><a href="#applications">Applications</a><a href="#industries">Industries</a><a href="#brands">Brands</a><a href="#areas">Service areas</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
+<div class="nav-r"><a class="btn" href="tel:+919569329637">Call now</a><button class="burger" id="bg" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button></div>
 </div>
 </nav>
 
@@ -166,11 +175,11 @@ section{padding:54px 0}
 <rect x="120" y="188" width="130" height="3" fill="#ff6a1a" class="scan"/>
 <g class="part"><rect x="0" y="152" width="40" height="38" rx="3" fill="#7fa6c9"/><circle cx="20" cy="171" r="7" fill="#14263a"/></g>
 <g class="part p2"><rect x="0" y="152" width="40" height="38" rx="3" fill="#7fa6c9"/><circle cx="20" cy="171" r="7" fill="#14263a"/></g>
-<g class="part p3"><rect x="0" y="152" width="40" height="38" rx="3" fill="#7fa6c9"/><path d="M8 160l22 18" stroke="#ff4d4d" stroke-width="3"/></g>
+<g class="part p3"><rect x="0" y="152" width="40" height="38" rx="3" fill="#7fa6c9" stroke="#ff4d4d" stroke-width="2"/><path d="M8 160l22 18" stroke="#ff4d4d" stroke-width="3"/></g>
 <rect x="270" y="30" width="110" height="64" rx="4" fill="#0b1622" stroke="#223850"/>
 <text x="282" y="52">Result</text>
-<text x="282" y="74" style="fill:#3ddc84;font-size:14px;font-weight:600">PASS / REJECT</text>
-<text x="14" y="280">Camera + lighting + software inspecting parts in real time</text>
+<text class="rp" x="282" y="76" style="fill:#3ddc84;font-size:20px;font-weight:700">&#10003; PASS</text><text class="rr" x="282" y="76" style="fill:#ff5a5a;font-size:20px;font-weight:700">&#10007; REJECT</text>
+<circle cx="18" cy="262" r="5" fill="#14263a" stroke="#7fa6c9" stroke-width="2"/><text x="30" y="266">Hole present = PASS</text><path d="M170 257l12 10" stroke="#ff4d4d" stroke-width="3"/><text x="190" y="266">Defect line = REJECT</text><text x="14" y="288">Camera + lighting + software inspecting parts in real time</text>
 </svg>
 </div>
 </div>
@@ -214,13 +223,16 @@ section{padding:54px 0}
 
 <section id="cameras">
 <div class="wrap">
-<div class="sec-h"><h2>Cameras for your production line</h2><p>We supply, set up and connect the camera, lighting and software, so you get a working inspection system and not just a camera.</p></div>
+<div class="sec-h"><h2>Industrial cameras for inspection</h2><p>We help you choose the right camera type, then supply it with the lens, lighting and software as one working inspection system.</p></div>
 <div class="grid">
-<div class="card"><h3>Quality inspection camera</h3><p>Checks every product for defects, damage, colour and finish, and flags or rejects bad pieces.</p></div>
-<div class="card"><h3>Production line camera</h3><p>Mounted on your conveyor or machine to inspect, count and verify items at full line speed.</p></div>
-<div class="card"><h3>Industrial camera</h3><p>High-speed, factory-grade area-scan and line-scan cameras with the right lens and lighting for your part.</p></div>
-<div class="card"><h3>Quality check camera</h3><p>Automatic checking of labels, print, codes, assembly and dimensions, with results logged for every item.</p></div>
+<div class="card"><h3>Area-scan cameras</h3><p>The most common choice. Captures a full image of each part, suited to defect, presence and label checks.</p></div>
+<div class="card"><h3>Line-scan cameras</h3><p>Built for continuous materials such as film, sheet, fabric and long or fast-moving parts.</p></div>
+<div class="card"><h3>Smart cameras</h3><p>Camera and processor in one unit. Simple to install for code reading and basic checks.</p></div>
+<div class="card"><h3>3D cameras</h3><p>Measure height, volume and shape. Used for dimension checks and robot or forklift guidance.</p></div>
+<div class="card"><h3>Code readers</h3><p>Read barcodes, QR codes and direct part marks (DPM) for traceability.</p></div>
 </div>
+<p style="margin-top:22px;color:var(--muted)">Use them as a quality inspection camera, production line camera or quality check camera on your line. Not sure which one fits your product? Send a sample and we will recommend it.</p>
+<p style="margin-top:16px"><a class="btn wa" href="https://wa.me/919569329637?text=Hello%20Xpertech%20Solutions,%20please%20help%20me%20choose%20an%20inspection%20camera." target="_blank" rel="noopener noreferrer">Help me choose a camera</a></p>
 </div>
 </section>
 
@@ -364,6 +376,9 @@ section{padding:54px 0}
 </a>
 
 <script>
+var nv=document.querySelector(".nav"),bg=document.getElementById("bg");
+bg.addEventListener("click",function(){var o=nv.classList.toggle("open");bg.setAttribute("aria-expanded",o)});
+document.querySelectorAll("#menu a").forEach(function(a){a.addEventListener("click",function(){nv.classList.remove("open");bg.setAttribute("aria-expanded","false")})});
 document.getElementById('inq').addEventListener('submit',function(e){
 e.preventDefault();
 var v=function(i){return document.getElementById(i).value.trim()};
