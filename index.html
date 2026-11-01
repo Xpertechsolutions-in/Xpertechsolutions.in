@@ -354,9 +354,10 @@ section{padding:54px 0}
 <label for="l">Plant location (city, state)</label><input id="l" type="text" placeholder="e.g. Baddi, Himachal">
 <label for="s">What do you want to inspect?</label>
 <select id="s">
-<option>Surface defect detection</option><option>Presence / assembly check</option><option>OCR / OCV</option><option>Barcode / QR / DPM reading</option><option>Dimensional measurement</option><option>Label / print inspection</option><option>Robot guidance</option><option>Other (AMR, CCTV, Fire, Solar, Glass)</option>
+<option>Surface defect detection</option><option>Presence / assembly check</option><option>OCR / OCV</option><option>Barcode / QR / DPM reading</option><option>Dimensional measurement</option><option>Label / print inspection</option><option>Robot guidance</option><option value="Other">Other (type your requirement)</option>
 </select>
-<label for="m">Product and defect details</label><textarea id="m" rows="3" placeholder="Product, line speed, defects to catch..."></textarea>
+<div id="ow" hidden><label for="o">Type your requirement</label><input id="o" type="text" placeholder="e.g. AMR, CCTV, solar, or anything else"></div>
+<label for="m">Remarks (optional)</label><textarea id="m" rows="3" placeholder="Product, line speed, defects to catch, quantity, timeline..."></textarea>
 <button class="btn wa" type="submit">Send on WhatsApp</button>
 <p class="hint">Opens WhatsApp with your details filled in.</p>
 </form>
@@ -376,13 +377,15 @@ section{padding:54px 0}
 </a>
 
 <script>
+document.getElementById("s").addEventListener("change",function(){var w=document.getElementById("ow"),o=this.value==="Other";w.hidden=!o;document.getElementById("o").required=o;if(o)document.getElementById("o").focus()});
 var nv=document.querySelector(".nav"),bg=document.getElementById("bg");
 bg.addEventListener("click",function(){var o=nv.classList.toggle("open");bg.setAttribute("aria-expanded",o)});
 document.querySelectorAll("#menu a").forEach(function(a){a.addEventListener("click",function(){nv.classList.remove("open");bg.setAttribute("aria-expanded","false")})});
 document.getElementById('inq').addEventListener('submit',function(e){
 e.preventDefault();
 var v=function(i){return document.getElementById(i).value.trim()};
-var t='Hello Xpertech Solutions,\nName: '+v('n')+'\nPhone: '+v('p')+'\nLocation: '+v('l')+'\nInspection need: '+v('s')+'\nDetails: '+v('m');
+var need=v('s')==='Other'?('Other - '+v('o')):v('s');
+var t='Hello Xpertech Solutions,\nName: '+v('n')+'\nPhone: '+v('p')+'\nLocation: '+v('l')+'\nRequirement: '+need+'\nRemarks: '+v('m');
 window.open('https://wa.me/919569329637?text='+encodeURIComponent(t),'_blank','noopener');
 });
 </script>
